@@ -12,9 +12,7 @@ code {
     monospace;
 }
 .header {
-  width: 100%;
-  background: lightblue;
-  font-size: 3em;
+ margin-left: 20px;
 }
 #main .add_cont{
   padding: 20px;
@@ -27,8 +25,6 @@ code {
 }
 .right{
   float: right;
-  margin-right: 40px;
-  padding: 20px;
 }
 .profile_cont{
   margin: 30px;

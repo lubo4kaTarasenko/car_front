@@ -29,7 +29,7 @@ export default class AddCar extends React.Component {
               <FormControlLabel value="4" control={<Radio />} label="4" />
             </RadioGroup>
           </FormControl>
-          <p><Button variant="contained" color="primary" id='add' onClick={ ()=> this.addCar()}> Add car</Button></p>
+          <p><Button variant="contained" color="primary" id='add' onClick={ ()=> this.addCar()}> Add</Button></p>
         </div>
       </Paper>  
   )}

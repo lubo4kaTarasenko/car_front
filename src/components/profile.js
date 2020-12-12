@@ -21,8 +21,8 @@ export default class Profile extends React.Component {
           <div>Car</div>
         </div>
         <div className='adding_car inl right'>
-          <Button variant="contained" color="primary" onClick={()=> this.setClick()}>Add car</Button>
-          {this.state.click ? <AddCar/> : null}
+          {this.state.click? <AddCar/> : 
+            <Button variant="contained" color="primary"onClick={()=> this.setClick()}>Add car</Button>}
         </div>
       </Paper>  
   )}
