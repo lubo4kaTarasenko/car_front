@@ -1,12 +1,13 @@
 import React from 'react'
 import { Paper, Button, TextField,  Radio, FormLabel, FormControl, FormControlLabel, RadioGroup} from '@material-ui/core';
+import { connect } from "react-redux";
+import { updateClick } from "../redux/actions";
 
-export default class AddCar extends React.Component {    
+class AddCar extends React.Component {    
   constructor(props) {
     super(props);
     this.state = {
       seatsValue: 1
-      
     }
   }
 
@@ -42,5 +43,20 @@ export default class AddCar extends React.Component {
       passengers_number: this.state.seatsValue
     }
     console.log(car)
+    this.dispatchUpdateClick(false) 
+  }
+  dispatchUpdateClick(isClick){
+    this.props.updateClick(isClick)
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isClick: state.isClick.isClick
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { updateClick }
+)(AddCar);

@@ -1,16 +1,16 @@
 import React from 'react'
 import { Paper, Button, TextField} from '@material-ui/core';
 import AddCar from './addCar';
+import { connect } from "react-redux";
+import { updateClick } from "../redux/actions";
 
-export default class Profile extends React.Component {    
+class Profile extends React.Component {    
   constructor(props) {
-    super(props);
-    this.state = {
-      click: false
-    }
+    super(props);   
   }
 
   render() {
+    console.log(this.props.isClick)
     return(  
       <Paper elevation={3} className='profile_cont'>
         <div className='profile_info inl left'>
@@ -21,16 +21,28 @@ export default class Profile extends React.Component {
           <div>Car</div>
         </div>
         <div className='adding_car inl right'>
-          {this.state.click? <AddCar/> : 
+          {this.props.isClick ? <AddCar/> : 
             <Button variant="contained" color="primary"onClick={()=> this.setClick()}>Add car</Button>}
         </div>
       </Paper>  
   )}
 
   setClick(){
-    if (this.state.click) this.setState({click: false}) 
-    else{
-      this.setState({click: true})
-    }
+    this.dispatchUpdateClick(true) 
+  }
+
+  dispatchUpdateClick(isClick){
+    this.props.updateClick(isClick)
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    isClick: state.isClick.isClick
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  { updateClick }
+)(Profile);
