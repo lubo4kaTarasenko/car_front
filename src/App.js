@@ -1,21 +1,28 @@
-import AddCar from './components/addCar';
 import Profile from './components/profile';
-import {AppBar,Toolbar, Button} from '@material-ui/core';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
+import Header from './components/header';
+import SignUp from './components/signUp';
+import LogIn from './components/logIn';
 
 function App() {
   return (
-    <div id='main'>
-     <AppBar position="static"> 
-      <Toolbar className='nav_cont'>    
-        <h2>Car 2 go</h2> 
-        <div className='header'> 
-          <Button variant="contained" color='primary'>Profile</Button>
-          &nbsp;&nbsp;
-          <Button variant="contained" color='primary'>Home</Button>          
-        </div>         
-      </Toolbar>       
-     </AppBar>
-    <Profile/>
+    <div id='main'>     
+      <Router>
+        <Header/>     
+        <Switch>
+          <Route path="/sign_up" component={SignUp}/>           
+          <Route path="/log_in" component={LogIn} />           
+          <Route path="/profile" component={Profile}/>
+        </Switch>      
+    </Router>
+
   </div>
   );
 }
